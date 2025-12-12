@@ -34,17 +34,42 @@ jobs:
       # Ejecuta la tarea 'test' de Gradle. Esto generará los reportes (JUnit XML/Cucumber JSON)
       run: ./gradlew test --no-daemon
 
-   # add before this step: uses: actions/setup-node@v4 (see below)
-    - name: Upload Test Results to Qase (via npx)
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Upload Test Results to Qase (detect CLI)
       run: |
-        echo "Starting Qase CLI upload..."
-        # npx will fetch and run the correct package in one step
-        npx --yes qaseio upload junit "build/test-results/test/TEST-*.xml"
+        echo "Starting Qase CLI detection..."
+        # Install the candidate package(s)
+        npm install -g qaseio || true
+        npm install -g qase || true
+        npm install -g @qase/qase-cli || true
+
+        # Show global packages and global bin contents so we can see the installed binary name
+        npm list -g --depth=0 || true
+        echo "Global bin: $(npm bin -g)"
+        ls -la "$(npm bin -g)" || true
+
+        # Try to show available commands
+        which qase || true
+        which qaseio || true
+        which qase-cli || true
+
+        # Try help variants (will fail if not present, but output helps debug)
+        qase --help 2>&1 || true
+        qaseio --help 2>&1 || true
+        qase-cli --help 2>&1 || true
+
+        # If a working command is found, run it (adjust after you inspect the output)
+        # Example (commented out to avoid failing the job during detection):
+        # qase upload junit "build/test-results/test/TEST-*.xml"
       env:
-          QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
-          QASE_PROJECT_CODE: FRT
-          QASE_RUN_NAME: Automated Tests Execution from GitHub Actions - ${{ github.sha }}
-          QASE_ENVIRONMENT: CI-Github-Actions
+        QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
+        QASE_PROJECT_CODE: FRT
+        QASE_RUN_NAME: Automated Tests Execution from GitHub Actions - ${{ github.sha }}
+        QASE_ENVIRONMENT: CI-Github-Actions
       
 
    
