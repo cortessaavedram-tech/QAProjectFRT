@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -24,11 +25,22 @@ public class BasePage {
 
     public static void setupBrowser() {
         if (driver ==null) {
+
+            //Create and configure geadless options
+            ChromeOptions options = new ChromeOptions();
+
+            //Essential arguments for running in CI environments
+            options.addArguments("--headless=new");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--window-size=1920,1080");
+
+
             //Driver is configurated using WebDriverManager
             WebDriverManager.chromedriver().setup();
 
             //The "driver" static variable is initialized
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(options);
 
             //WebDriverWait is initialized then the driver exists
             wait = new WebDriverWait(driver, Duration.ofSeconds(10));

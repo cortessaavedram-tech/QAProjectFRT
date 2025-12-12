@@ -23,6 +23,9 @@ jobs:
         distribution: 'temurin' 
         cache: 'gradle'
 
+    - name: Install Chrome and ChromeDriver
+      uses: browser-actions/setup-chrome@latest
+
     - name: Build with Gradle
       # Este paso es importante para descargar dependencias y preparar el proyecto
       run: ./gradlew build --no-daemon
