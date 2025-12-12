@@ -1,0 +1,12 @@
+{
+  "qase": {
+    "api": {
+      "token": "e2d611e2c712973240397ca567b65eb935515bb8b7c0f8a20c4eb8c63892f48c"
+    },
+    "project": "FRT",
+    "report": true,
+    "run": {
+      "complete": true
+    }
+  }
+}
