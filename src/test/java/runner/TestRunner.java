@@ -1,6 +1,7 @@
 package runner;
 
 import org.junit.platform.suite.api.ConfigurationParameter;
+import org.junit.platform.suite.api.ConfigurationParameters;
 import org.junit.platform.suite.api.IncludeEngines;
 import org.junit.platform.suite.api.SelectClasspathResource;
 import org.junit.platform.suite.api.Suite;
@@ -16,10 +17,11 @@ import pages.BasePage;
 @Suite 
 @IncludeEngines("cucumber") //Cucumber engine activated
 @SelectClasspathResource("features") //It indicates where are the .feature
-@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "steps") //Package where are the steps
-@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, io.qase.cucumber7.QaseEventListener")
-@ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, value = "@QaseId=1")
-
+@ConfigurationParameters({
+    @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "steps"), //Package where are the steps
+    @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "io.qase.cucumber7.QaseEventListener"),
+    @ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, value = "@QaseId=2")
+})
 
 public class TestRunner {
     @AfterAll

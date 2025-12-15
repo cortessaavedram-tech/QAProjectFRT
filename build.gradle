@@ -38,7 +38,7 @@ testImplementation 'org.junit.platform:junit-platform-suite:1.11.3'
 testImplementation 'org.junit.jupiter:junit-jupiter:5.11.3'
 
 // https://mvnrepository.com/artifact/io.qase/qase-cucumber-v7-reporter
-implementation 'io.qase:qase-cucumber-v7-reporter:4.1.26'
+testImplementation 'io.qase:qase-cucumber-v7-reporter:4.1.26'
 
 }
 
@@ -52,6 +52,17 @@ java {
 
 tasks.named('test') {
     useJUnitPlatform() 
+
+    systemProperties System.getProperties()
+
+    //Activa el reporter de Qase
+    systemProperty "qase.enable", "true"
+
+    systemProperty "qase.project.code", "FRT"
+    systemProperty "qase.api.token", "e82b65d4e7a0934a884de76e9c5ab8cba34d68f6a2dabc854260ab9d117103ff"
+
+    //Comunicamos a Cucumber que use el plugin de Qase
+    systemProperty "cucumber.plugin", "io.qase.cucumber7.QaseEventListener"
 
     // Esto permite que el reporter de Qase lea la configuración del sistema
     systemProperty "qase.config", "src/test/resources/qase.config.json"

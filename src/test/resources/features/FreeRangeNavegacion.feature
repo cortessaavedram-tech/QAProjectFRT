@@ -8,7 +8,7 @@ Feature: Navigation
   Background: The user is on the Free Range Testers web without logging in.
     Given The user navigate to www.freerangetesters.com
 
-  @QaseId=1
+  @QaseId=2
   Scenario Outline: The user can access the subpages through the navigation bar
     When The user clicks on the section <Section Name>
     Then The <Section Name> corresponds to <Section url>
