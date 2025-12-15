@@ -62,7 +62,7 @@ tasks.named('test') {
     
 
     systemProperty "qase.project.code", "FRT"
-    systemProperty "qase.api.token", "e82b65d4e7a0934a884de76e9c5ab8cba34d68f6a2dabc854260ab9d117103ff"
+    systemProperty "qase.api.token", "70ea1a43a04de3c3e9a2bd27882929f5977b62228421012a48d9635d8797892a"
 
     //Comunicamos a Cucumber que use el plugin de Qase
     systemProperty "cucumber.plugin", "io.qase.cucumber7.QaseEventListener"
