@@ -38,14 +38,16 @@ jobs:
 
     - name: Upload Test Results to Qase 🚀
       run: |
-        echo "Instalando Qase CLI..."
-        npm install -g @qase/cli
+        echo "Limpiando prefijos de npm..."
+        # Esto soluciona el error de 'token expired' en runners de GitHub
+        npm config set registry https://registry.npmjs.org/
         
-        echo "Verificando archivos de resultados..."
-        ls -la build/test-results/test/ || echo "No se encontraron archivos XML"
-
+        echo "Instalando Qase CLI..."
+        npm install -g qase-cli
+        
         echo "Subiendo resultados a Qase..."
-        qase result:upload \
+        # Usamos 'qase-cli' que es el ejecutable estándar
+        qase-cli result:upload \
           --project "FRT" \
           --format junit \
           --run-name "GitHub Run ${{ github.run_number }}" \
