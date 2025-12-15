@@ -1,12 +1,15 @@
 {
-  "qase": {
+  "mode": "testops",
+  "testops": {
     "api": {
-      "token": "e2d611e2c712973240397ca567b65eb935515bb8b7c0f8a20c4eb8c63892f48c"
+      "token": "e82b65d4e7a0934a884de76e9c5ab8cba34d68f6a2dabc854260ab9d117103ff"
     },
     "project": "FRT",
-    "report": true,
     "run": {
       "complete": true
+    },
+    "plan": {
+      "id": 0
     }
   }
 }
