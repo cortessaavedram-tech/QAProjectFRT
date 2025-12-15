@@ -1,10 +1,14 @@
 {
-  "mode": "testops",
+  
   "testops": {
-    "api": {
-      "token": "e82b65d4e7a0934a884de76e9c5ab8cba34d68f6a2dabc854260ab9d117103ff"
-    },
+    "mode": "testops",
     "project": "FRT",
+    
+  "api": {
+      "token": "e82b65d4e7a0934a884de76e9c5ab8cba34d68f6a2dabc854260ab9d117103ff",
+      "host": "qase.io"
+    },
+    
     "run": {
       "complete": true
     },
@@ -12,4 +16,5 @@
       "id": 0
     }
   }
+
 }
