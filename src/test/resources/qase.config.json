@@ -1,6 +1,6 @@
 {
   "api": {
-    "token": "70ea1a43a04de3c3e9a2bd27882929f5977b62228421012a48d9635d8797892a",
+    "token": "${{secrets.QASE_API_TOKEN}}",
     "host": "qase.io"
   },
   "testops": {
