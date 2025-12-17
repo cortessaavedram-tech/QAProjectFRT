@@ -30,7 +30,7 @@ jobs:
         # Importante: El plugin leerá este secreto automáticamente
         QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
 
-        # ... Tus pasos anteriores (checkout, setup java, etc.) ...
+        
     
     - name: Run Tests
       # Asegúrate de que tu paso de ejecución de tests esté aquí
