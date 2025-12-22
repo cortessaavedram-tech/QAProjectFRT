@@ -36,13 +36,13 @@ public class FreeRangeSteps{
     }
 
     @When("the user enters an incorrect email")
-    public void uWriteEmail(){
-        accederPage.emailWrite();
+    public void enterInvalidEmail(){
+        accederPage.enterIncorrectEmail("usuarioSinArroba");
     }
 
     @And("clicks on Inicio de sesion button")
-    public void uClickIniciarSesion(){
-        accederPage.clickIniciarSesion();
+    public void clickLogin(){
+        accederPage.clickLogin();
     }
 
     @Then("^The (.*) corresponds to (.*)$")
@@ -51,11 +51,10 @@ public class FreeRangeSteps{
         assertTrue(actualUrl.contains(expectedUrl));
     }
     
-    @Then("the message: You have to include this @ symbol, must appear")
-    public void messageIncludesSymbolError(String locator, String expectedLocator){
-        String actualLocator = basePage.getCurrentLocator(expectedLocator);
-        accederPage.emailErrorMessage();
-        assertTrue(actualLocator.contains(expectedLocator));;
+    @Then("the message: {string}, must appear")
+    public void verifyValidationMessage(String expectedMessage){
+        String actualMessage = accederPage.getEmailValidationMessage();
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 
 

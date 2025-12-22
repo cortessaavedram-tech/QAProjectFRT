@@ -70,7 +70,7 @@ public class BasePage {
     
 
     //Finds and returns a web element
-    private WebElement Find(String locator){
+    protected WebElement Find(String locator){
         return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
     }
 

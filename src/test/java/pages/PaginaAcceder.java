@@ -5,30 +5,20 @@ package pages;
 
 public class PaginaAcceder extends BasePage {
 
-    private String accederLocator1 = "//input[@id='email']";
-    private String emailKey = "cortes.com";
-    private String accederLocator2 = "//input[@id='password']";
-    private String passwordKey = "1234";
-    private String sesionButton = "//button[@type='submit']";
-    //private String messageSymbolLocator = "//input[@id='email' data-gtm-form-interact-field-id";
-
-
-    public void emailWrite() {
-        write(accederLocator1, emailKey);
-    }
-
-    public void passwordWrite() {
-        write(accederLocator2, passwordKey);
-    }
-
-    public void clickIniciarSesion(){
-        clickElement(sesionButton);
-    }
-
-    public void emailErrorMessage(){
-       
-    }
-
+    private String emailInput = "//input[@id='email']";
+    private String loginButton = "//span[normalize-space()='Inicio de sesión']"; 
     
+    public void enterIncorrectEmail(String email) {
+    write(emailInput, email);
+    }
+
+    public void clickLogin() {
+    clickElement(loginButton);
+    }
+
+    public String getEmailValidationMessage() {
+    // Esto captura el mensaje nativo "Incluye un signo @..."
+    return Find(emailInput).getDomAttribute("validationMessage");
+    }
 
 }

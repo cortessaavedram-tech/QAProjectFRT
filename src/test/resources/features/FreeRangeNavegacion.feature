@@ -34,11 +34,11 @@ Feature: Navigation
 #Background: The user is on the Free Range Testers web without logging in.
     #Given The user navigate to www.freerangetesters.com
 
-  #Scenario: Profile webpage- Login
-   #Given the user is on Acceder Section
-   #When the user enters an incorrect email
-   #And clicks on Inicio de sesion button
-   #Then the message: You have to include this @ symbol, must appear
+  Scenario: Profile webpage- Login
+   Given the user is on Acceder Section
+   When the user enters an incorrect email
+   And clicks on Inicio de sesion button
+   Then the message: You have to include this @ symbol, must appear
 
   
 
